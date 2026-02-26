@@ -12,6 +12,11 @@ Aluno *primeiroLista = NULL;
 void addPrimeiro() {
 	Aluno *alunos = (Aluno*)malloc(sizeof(Aluno));
 	
+	if (!alunos) {
+		printf("\nFalha ao tentar alocar memoria");
+		return;
+	}
+	
 	printf("\nID do aluno: ");
 	scanf("%d", &alunos->id);
 	
@@ -25,6 +30,11 @@ void addPrimeiro() {
 
 void addUltimo() {
 	Aluno *alunos = (Aluno*) malloc(sizeof(Aluno));
+	
+	if (!alunos) {
+		printf("\nFalha ao tentar alocar memoria");
+		return;
+	}
 	
 	printf("\nID do aluno: ");
 	scanf("%d", &alunos->id);
@@ -48,10 +58,11 @@ void addUltimo() {
 	}
 }
 
-void imprime(Aluno *aux) {
+void imprimir() {
+	Aluno *aux = primeiroLista;
 	printf("\n---- Dados dos Alunos ----\n");
 
-    while (aux) {
+    while (aux != NULL) {
         printf("\nID: %d", aux->id);
         printf("\nNome: %s", aux->nome);
 
@@ -67,15 +78,49 @@ void imprime(Aluno *aux) {
     }
 }
 
+void liberarLista() {
+	
+	Aluno *aux = primeiroLista;
+	Aluno *temp;
+	
+	while (aux) {
+		temp = aux;
+		aux = aux->prox;
+		free(temp);
+	}
+	
+	primeiroLista = NULL;
+}
+
+void menu() {
+	printf("\n\n---- Gerenciando Alunos ----\n");
+	printf("\n1- Inserir no Inicio");
+	printf("\n2- Inserior no Final");
+	printf("\n3- Imprimir Lista de Alunos");
+	printf("\n0- Sair\n\n");
+}
+
 int main() {
 	
-	printf("\n---- Inserindo no inicio----\n");
-    addPrimeiro();
-    imprime(primeiroLista);
-    
-    printf("\n---- Inserindo no final----\n");
-    addUltimo();
-    imprime(primeiroLista);
+	int opcao = -1;
+	
+	while (opcao != 0) {	
+		
+		menu();
+		scanf("%d", &opcao);
+		
+		if (opcao == 1) {
+			addPrimeiro();
+		} else if (opcao == 2) {
+			addUltimo();
+		} else if (opcao == 3) {
+			imprimir();
+		} else if (opcao == 0) {
+			printf("\nEncerrando...");
+		} else {
+			printf("\nOpcao invalida.");
+		}
+	}
     
 	return 0;
 }
