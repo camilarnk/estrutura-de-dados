@@ -50,6 +50,15 @@ R: O comando free(n) deve ser implementado para liberar corretamente a memoria.
 
 ----
 
+7. No loop de busca, por que a condição é filho!=NULL && filho->valor != valor?
+
+R: A condição verifica se o nodo atribuido a variavel filho (que sera subsequente
+a variavel pai) possui algum valor (filho!=null), e depois, verifica se esse valor
+é diferente do que esta sendo buscado para remoçao (filho->valor!=valor), pois caso
+seja igual, o valor a remover foi entao encontrado.
+
+---- 
+
 */
 
 #include <stdio.h>
