@@ -19,10 +19,21 @@ modificado na impressão da árvore.
 
 ----
 
-3: Desenhe uma subárvore onde o nodo 20 tem o filho 15 à esquerda e nenhum à
+3. Desenhe uma subárvore onde o nodo 20 tem o filho 15 à esquerda e nenhum à
 direita. Se removermos o 20, quem ocupará o lugar dele na estrutura do pai?
 
 R: resposta em exercicio-03.PNG.
+
+----
+
+4. O que o código atual faz se tentarmos remover um nodo que possui tanto filho à
+esquerda quanto à direita?
+
+R: O nodo nao sera removido, pois a função 'remover' nao verifica atualmente se um
+nodo possui mais que um filho. O valor assim nao entrará em nenhuma das condicionais
+e sera ignorado na tentativa de remoçao.
+
+----
 
 */
 
