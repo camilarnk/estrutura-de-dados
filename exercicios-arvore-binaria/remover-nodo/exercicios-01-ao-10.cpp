@@ -43,6 +43,13 @@ foi impresso devido a um erro de acesso a memoria invalida.
 
 ----
 
+6. O código desconecta o nodo da árvore, mas falta um comando essencial da
+linguagem C para liberar memória. Qual?
+
+R: O comando free(n) deve ser implementado para liberar corretamente a memoria.
+
+----
+
 */
 
 #include <stdio.h>
