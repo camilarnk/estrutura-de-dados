@@ -35,6 +35,14 @@ e sera ignorado na tentativa de remoçao.
 
 ----
 
+5. Se percorrermos toda a árvore e o valor não for encontrado (filho == NULL), o
+que o código imprime?
+
+R: Ao tentar remover um valor inexistente, houve uma falha no codigo e nada
+foi impresso devido a um erro de acesso a memoria invalida.
+
+----
+
 */
 
 #include <stdio.h>
