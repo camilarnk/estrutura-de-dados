@@ -92,6 +92,28 @@ void remover(Nodo *n, int valor) {
 			pai->dir = filho->dir;
 		}
 	}
+	
+	// identificando nó com dois filhos
+	if(filho->esq != NULL && filho->dir != NULL) { // os dois lados estao preenchidos
+		Nodo *paiSucessor = filho;
+		Nodo *sucesso = filho->dir; // começa verificando pela direita
+		
+		while(sucesso->esq != NULL) { // seguir ate o elemento mais à esquerda possivel
+			paiSucessor = sucessor;
+			sucessor = sucessor->esq;
+		}
+		
+		filho->valor = sucessor->valor; // 1. substitui o valor do nodo a apagar pelo valor do sucessor
+		
+		// 2. ajusta os ponteiros para remover o nodo sucesso original
+		if(paiSucessor == filho) { // se o sucessor for o filho direto da direita
+			filho->dir = sucessor->dir;
+		} else { // se o sucessor estiver no fundo à esquerda 
+			paiSucessor->esq = sucessor->dir;
+		}
+		
+		free(sucessor); // libera memoria do nodo removido
+	}
 
 }
 
@@ -115,4 +137,3 @@ void imprimir(Nodo *n) {
 	}
 	imprimir(n->dir);
 }
-
