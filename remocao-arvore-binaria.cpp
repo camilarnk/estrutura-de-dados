@@ -96,9 +96,9 @@ void remover(Nodo *n, int valor) {
 	// identificando nó com dois filhos
 	if(filho->esq != NULL && filho->dir != NULL) { // os dois lados estao preenchidos
 		Nodo *paiSucessor = filho;
-		Nodo *sucesso = filho->dir; // começa verificando pela direita
+		Nodo *sucessor = filho->dir; // começa verificando pela direita
 		
-		while(sucesso->esq != NULL) { // seguir ate o elemento mais à esquerda possivel
+		while(sucessor->esq != NULL) { // seguir ate o elemento mais à esquerda possivel
 			paiSucessor = sucessor;
 			sucessor = sucessor->esq;
 		}
