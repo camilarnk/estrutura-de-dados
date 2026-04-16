@@ -105,7 +105,7 @@ void remover(Nodo *n, int valor) {
 		
 		filho->valor = sucessor->valor; // 1. substitui o valor do nodo a apagar pelo valor do sucessor
 		
-		// 2. ajusta os ponteiros para remover o nodo sucesso original
+		// 2. ajusta os ponteiros para remover o nodo sucessor original
 		if(paiSucessor == filho) { // se o sucessor for o filho direto da direita
 			filho->dir = sucessor->dir;
 		} else { // se o sucessor estiver no fundo à esquerda 
@@ -122,18 +122,7 @@ void imprimir(Nodo *n) {
 		printf("Aborta o loop \n" );
 		return;		
 	}
-			
-	printf("Chamou o loop  da esquerda com o no: %i\n", n->valor);
-	if(n->esq == NULL) {
-	    printf(" a proxima esquerda e nula, Vai abortar, imprimir o valor e chamar o loop da direita\n ");
-	}
 	imprimir(n->esq);	
-	
 	printf("\n Valor: %d\n",n->valor); // imprime o nó da vez
-	
-	printf("Chamou o loop  da direita com o no: %i\n", n->valor);
-	if(n->dir == NULL) {
-	    printf(" a proxima direita e nula, Vai abortar e acabou a função, volta pra quem esta esperando ou encerra tudo\n ");
-	}
 	imprimir(n->dir);
 }
