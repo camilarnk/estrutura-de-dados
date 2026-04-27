@@ -16,7 +16,6 @@ typedef struct nodo {
 	int valor;
 	struct nodo *esq;
 	struct nodo *dir;
-	// a estrutura para esse cenario deve ser apenas essa. um nodo *inferior estaria errado
 } Nodo;
 
 Nodo *create(int valor);
