@@ -12,7 +12,7 @@ typedef struct nodo{
 int valorRaiz;
 bool sair = false;
 int op;
-Nodo *raiz;
+Nodo *raiz = NULL;
 
 void menu(){
     if(raiz){
@@ -70,6 +70,13 @@ void add(Nodo *n, int valor){
 
 void insere(){
 	int valor;
+	
+	if(raiz == NULL) {
+		printf("\Crie a raiz antes de inserir um nodo!");
+		system("pause");
+		return;
+	}
+	
 	printf("Digite o valor do nodo: ");
 	scanf("%d", &valor);
 	add(raiz, valor);
@@ -77,12 +84,18 @@ void insere(){
 
 void criaRaiz(){
 	int valorRaiz;
+	
+	if(raiz != NULL) {
+		printf("\nA raiz ja foi criada! Valor: %d", raiz->valor);
+		system("pause");
+		return;
+	}
 	printf("Digite o valor da raiz: ");
 	scanf("%d", &valorRaiz);
 	raiz = create(valorRaiz);
+	printf("\nRaiz %d criada com sucesso", raiz->valor);
 	system("pause");
 }
-
 
 int altura(Nodo *n){
 	if(n == NULL){
