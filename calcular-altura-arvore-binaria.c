@@ -7,7 +7,7 @@ typedef struct nodo{
 	struct nodo *esq;
 	struct nodo *dir;
 	int altura;
-}Nodo;
+} Nodo;
 
 int valorRaiz;
 bool sair = false;
@@ -32,7 +32,7 @@ void sairDoSistema(){
 	sair = true;
 }
 
-Nodo* create(int valor){
+Nodo *create(int valor){
 	Nodo *n = (Nodo*)malloc(sizeof(Nodo));
 	n->valor = valor;
 	n->esq = NULL;
@@ -41,10 +41,16 @@ Nodo* create(int valor){
 	return n;
 }
 
-void imprimir(Nodo *n){	
+void imprimir(Nodo *n){
+	if(valorRaiz == NULL) {
+		printf("\nA arvore esta vazia!\n");
+		return;
+	}
+	
 	if(n==NULL){
 		return;
 	}
+	
 	imprimir(n->esq);
 	printf("\n%d", n->valor);
 	imprimir(n->dir);	
@@ -68,10 +74,8 @@ void add(Nodo *n, int valor){
 }
 
 void insere(){
-	int valor;
-	
 	if(raiz == NULL) {
-		printf("\Crie a raiz antes de inserir um nodo!");
+		printf("\nCrie a raiz antes de inserir um nodo!\n");
 		printf("\nDigite o valor da raiz: ");
 		scanf("%d", &valorRaiz);
 		
@@ -82,29 +86,33 @@ void insere(){
 		return;
 	}
 	
+	int valor;
 	printf("Digite o valor do nodo: ");
 	scanf("%d", &valor);
 	add(raiz, valor);
+	
+	printf("\nNodo %d inserido com sucesso!\n", valor);
+	system("pause");
 }
 
 int altura(Nodo *n){
 	if(n == NULL){
 		return -1;
-	}else{
-		int alturaEsquerda = altura(n->esq);
-		printf("Valor da Esquerda: %d", alturaEsquerda);
-		printf("\n");
-		
-		int alturaDireita  = altura(n->dir);
-		printf("Valor da Direita: %d", alturaDireita);
-		printf("\n");
-		
-		if(alturaEsquerda > alturaDireita){
-			return alturaEsquerda + 1;
-		}else{
-			return alturaDireita + 1;
-		}		
 	}
+	
+	int alturaEsquerda = altura(n->esq);
+	printf("Valor da Esquerda: %d", alturaEsquerda);
+	printf("\n");
+	
+	int alturaDireita  = altura(n->dir);
+	printf("Valor da Direita: %d", alturaDireita);
+	printf("\n");
+	
+	if(alturaEsquerda > alturaDireita){
+		return alturaEsquerda + 1;
+	}else{
+		return alturaDireita + 1;
+	}		
 }
 
 int main(){
