@@ -1,0 +1,24 @@
+1.	Se você inserir os valores na ordem [10, 5, 15], qual será o valor retornado pela função altura(raiz)?
+Resposta: será retornado o valor 1.
+
+2.	Por que a função retorna -1 quando n == NULL em vez de 0? O que mudaria no cálculo final da altura se o retorno fosse 0?
+Resposta:  A função retorna -1 para não influenciar na soma dos nodos presentes na árvore, descontando 1. Se o retorno fosse 0, nenhum número seria removido da conta e a altura da árvore poderia retornar errada.
+
+3.	O código possui printf dentro da função altura. Se a árvore tiver apenas a raiz, o que será impresso no console antes de exibir o resultado final? 
+Resposta: Será impresso: Valor da Esquerda -1 e Valor da Direita -1.
+
+4.	Altere a função para que ela calcule a altura sem imprimir os valores intermediários de "alturaEsquerda" e "alturaDireita" no console.
+Resposta:
+int altura(Nodo *n){
+	  if(n == NULL){
+	     return -1;
+	  }
+	  int alturaEsquerda = altura(n->esq);
+	  int alturaDireita  = altura(n->dir);
+	  if(alturaEsquerda > alturaDireita){
+	     return alturaEsquerda + 1;
+	   }else{
+	     return alturaDireita + 1;
+	   }		
+    }
+ 
