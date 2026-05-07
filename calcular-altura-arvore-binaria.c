@@ -19,11 +19,10 @@ void menu(){
 	    printf("Valor da Raiz: %d", raiz->valor);
 	    printf("\n");
 	}			
-	printf("01 - Criar Raiz\n");
-	printf("02 - Inserir Nodo\n");	
-	printf("03 - Altura \n");
-	printf("04 - Imprimir\n");
-	printf("05 - Sair do Sistema\n");
+	printf("01 - Inserir Nodo\n");	
+	printf("02 - Altura \n");
+	printf("03 - Imprimir\n");
+	printf("04 - Sair do Sistema\n");
 	printf("\nDigite uma Opcao: ");
 	
 }
@@ -73,6 +72,12 @@ void insere(){
 	
 	if(raiz == NULL) {
 		printf("\Crie a raiz antes de inserir um nodo!");
+		printf("\nDigite o valor da raiz: ");
+		scanf("%d", &valorRaiz);
+		
+		raiz = create(valorRaiz);
+		printf("\nRaiz %d criada com sucesso!\n", raiz->valor);
+		
 		system("pause");
 		return;
 	}
@@ -80,21 +85,6 @@ void insere(){
 	printf("Digite o valor do nodo: ");
 	scanf("%d", &valor);
 	add(raiz, valor);
-}
-
-void criaRaiz(){
-	int valorRaiz;
-	
-	if(raiz != NULL) {
-		printf("\nA raiz ja foi criada! Valor: %d", raiz->valor);
-		system("pause");
-		return;
-	}
-	printf("Digite o valor da raiz: ");
-	scanf("%d", &valorRaiz);
-	raiz = create(valorRaiz);
-	printf("\nRaiz %d criada com sucesso", raiz->valor);
-	system("pause");
 }
 
 int altura(Nodo *n){
@@ -126,23 +116,20 @@ int main(){
 		
 		switch(op){
 			case 1:
-				criaRaiz();
-				break;
-			case 2:
 				insere();
 				break;
-			case 3:
+			case 2:
 				printf("\nAltura: %d\n", altura(raiz));
 				system("pause");
 				break;
-			case 4:
+			case 3:
 				imprimir(raiz);
 				printf("\n");
 				system("pause");
 				break;
-			case 5: 
+			case 4:
 				sairDoSistema();
-				break;			
+				break;		
 			default:
 				printf("\nOpcao invalida!\n");
 				system("pause");
